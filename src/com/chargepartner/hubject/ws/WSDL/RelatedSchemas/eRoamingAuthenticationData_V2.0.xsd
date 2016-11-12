@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.hubject.com/b2b/services/authenticationdata/v2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.hubject.com/b2b/services/authenticationdata/v2.0" xmlns:cmn="http://www.hubject.com/b2b/services/commontypes/v2.0">
+  <xs:import schemaLocation="eRoamingCommonTypes_V2.0.xsd" namespace="http://www.hubject.com/b2b/services/commontypes/v2.0"/>
+  <xs:element name="eRoamingPushAuthenticationData" type="tns:eRoamingPushAuthenticationData"/>
+  <xs:element name="eRoamingPullAuthenticationData" type="tns:eRoamingPullAuthenticationData"/>
+  <xs:element name="eRoamingAuthenticationData" type="tns:eRoamingAuthenticationData"/>
+  <xs:complexType name="eRoamingPushAuthenticationData">
+    <xs:sequence>
+      <xs:element name="ActionType" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="fullLoad"/>
+            <xs:enumeration value="update"/>
+            <xs:enumeration value="insert"/>
+            <xs:enumeration value="delete"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ProviderAuthenticationData" minOccurs="1" maxOccurs="1" type="tns:ProviderAuthenticationDataType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingPullAuthenticationData">
+    <xs:sequence>
+      <xs:element name="OperatorID" minOccurs="1" maxOccurs="1" type="cmn:OperatorIDType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingAuthenticationData">
+    <xs:sequence>
+      <xs:element name="AuthenticationData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="ProviderAuthenticationData" type="tns:ProviderAuthenticationDataType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StatusCode" type="cmn:StatusCodeType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProviderAuthenticationDataType">
+    <xs:sequence>
+      <xs:element name="ProviderID" minOccurs="1" maxOccurs="1" type="cmn:ProviderIDType"/>
+      <xs:element name="AuthenticationDataRecord" minOccurs="0" maxOccurs="unbounded" type="tns:AuthenticationDataRecordType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthenticationDataRecordType">
+    <xs:sequence>
+      <xs:element name="Identification" type="cmn:IdentificationType"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

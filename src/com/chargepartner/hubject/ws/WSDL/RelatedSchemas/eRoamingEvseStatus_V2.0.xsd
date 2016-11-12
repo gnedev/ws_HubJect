@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><xs:schema targetNamespace="http://www.hubject.com/b2b/services/evsestatus/v2.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.hubject.com/b2b/services/evsestatus/v2.0" xmlns:cmn="http://www.hubject.com/b2b/services/commontypes/v2.0" xmlns:st="http://www.inubit.com/eMobility/SBP">
+  <xs:import schemaLocation="eRoamingCommonTypes_V2.0.xsd" namespace="http://www.hubject.com/b2b/services/commontypes/v2.0"/>
+  <xs:import schemaLocation="eRoamingSimpleTypes.xsd" namespace="http://www.inubit.com/eMobility/SBP"/>
+  <xs:element name="eRoamingPushEvseStatus" type="tns:eRoamingPushEvseStatus"/>
+  <xs:element name="eRoamingPullEvseStatus" type="tns:eRoamingPullEvseStatus"/>
+  <xs:element name="eRoamingPullEvseStatusById" type="tns:eRoamingPullEvseStatusById"/>
+  <xs:element name="eRoamingEvseStatus" type="tns:eRoamingEvseStatus"/>
+  <xs:element name="eRoamingEvseStatusById" type="tns:eRoamingEvseStatusById"/>
+  <xs:complexType name="eRoamingPushEvseStatus">
+    <xs:sequence>
+      <xs:element name="ActionType" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="fullLoad"/>
+            <xs:enumeration value="update"/>
+            <xs:enumeration value="insert"/>
+            <xs:enumeration value="delete"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="OperatorEvseStatus" minOccurs="1" maxOccurs="1" type="tns:OperatorEvseStatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingPullEvseStatus">
+    <xs:sequence>
+      <xs:element name="ProviderID" minOccurs="1" maxOccurs="1" type="cmn:ProviderIDType"/>
+      <!--<xs:choice> 
+               <xs:element name="LastCall" minOccurs="0" maxOccurs="1" type="xs:dateTime"/>-->
+      <xs:element name="SearchCenter" minOccurs="0" maxOccurs="1" type="cmn:SearchCenterType"/>
+      <!--</xs:choice>-->
+      <xs:element name="EvseStatus" minOccurs="0" maxOccurs="1" type="tns:EvseStatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingPullEvseStatusById">
+    <xs:sequence>
+      <xs:element name="ProviderID" minOccurs="1" maxOccurs="1" type="cmn:ProviderIDType"/>
+      <xs:element name="EvseId" minOccurs="1" maxOccurs="100" type="cmn:EvseIDType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingEvseStatus">
+    <xs:sequence>
+      <xs:element name="EvseStatuses">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="OperatorEvseStatus" type="tns:OperatorEvseStatusType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StatusCode" type="cmn:StatusCodeType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingEvseStatusById">
+    <xs:sequence>
+      <xs:element name="EvseStatusRecords" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="EvseStatusRecord" type="tns:EvseStatusRecordType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StatusCode" type="cmn:StatusCodeType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EvseStatusRecordType">
+    <xs:sequence>
+      <xs:element name="EvseId" minOccurs="1" maxOccurs="1" type="cmn:EvseIDType"/>
+      <xs:element name="EvseStatus" minOccurs="1" maxOccurs="1" type="tns:EvseStatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="EvseStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Available"/>
+      <xs:enumeration value="Reserved"/>
+      <xs:enumeration value="Occupied"/>
+      <xs:enumeration value="OutOfService"/>
+      <xs:enumeration value="Unknown"/>
+      <xs:enumeration value="EvseNotFound"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OperatorEvseStatusType">
+    <xs:sequence>
+      <xs:element name="OperatorID" type="cmn:OperatorIDType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="OperatorName" type="st:String100" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="EvseStatusRecord" type="tns:EvseStatusRecordType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

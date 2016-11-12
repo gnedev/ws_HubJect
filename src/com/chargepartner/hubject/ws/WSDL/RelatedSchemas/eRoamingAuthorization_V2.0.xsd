@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><xs:schema targetNamespace="http://www.hubject.com/b2b/services/authorization/v2.0" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cmn="http://www.hubject.com/b2b/services/commontypes/v2.0" xmlns:tns="http://www.hubject.com/b2b/services/authorization/v2.0" xmlns:st="http://www.inubit.com/eMobility/SBP">
+  <xs:import schemaLocation="eRoamingCommonTypes_V2.0.xsd" namespace="http://www.hubject.com/b2b/services/commontypes/v2.0"/>
+  <xs:import schemaLocation="eRoamingSimpleTypes.xsd" namespace="http://www.inubit.com/eMobility/SBP"/>
+  <xs:element name="eRoamingAuthorizeStart" type="tns:eRoamingAuthorizeStart"/>
+  <xs:element name="eRoamingAuthorizationStart" type="tns:eRoamingAuthorizationStart"/>
+  <xs:element name="eRoamingAuthorizeStop" type="tns:eRoamingAuthorizeStop"/>
+  <xs:element name="eRoamingAuthorizationStop" type="tns:eRoamingAuthorizationStop"/>
+  <xs:element name="eRoamingAuthorizeRemoteStart" type="tns:eRoamingAuthorizeRemoteStart"/>
+  <xs:element name="eRoamingAuthorizeRemoteStop" type="tns:eRoamingAuthorizeRemoteStop"/>
+  <xs:element name="eRoamingChargeDetailRecord" type="tns:eRoamingChargeDetailRecord"/>
+  <xs:element name="eRoamingGetChargeDetailRecords" type="tns:eRoamingGetChargeDetailRecords"/>
+  <xs:element name="eRoamingChargeDetailRecords" type="tns:eRoamingChargeDetailRecords"/>
+  <xs:complexType name="eRoamingAuthorizeStart">
+    <xs:sequence>
+      <xs:element name="SessionID" type="cmn:SessionIDType" minOccurs="0"/>
+      <xs:element name="PartnerSessionID" type="st:String50" minOccurs="0"/>
+      <xs:element name="OperatorID" type="cmn:OperatorIDType"/>
+      <xs:element name="EVSEID" type="cmn:EvseIDType" minOccurs="0"/>
+      <xs:element name="Identification" type="cmn:IdentificationType"/>
+      <xs:element name="PartnerProductID" type="cmn:ProductIDType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingAuthorizationStart">
+    <xs:sequence>
+      <xs:element name="SessionID" type="cmn:SessionIDType" minOccurs="0"/>
+      <xs:element name="PartnerSessionID" type="st:String50" minOccurs="0"/>
+      <xs:element name="ProviderID" type="cmn:ProviderIDType" minOccurs="0"/>
+      <xs:element name="AuthorizationStatus" type="cmn:AuthorizationStatusType"/>
+      <xs:element name="StatusCode" type="cmn:StatusCodeType"/>
+      <xs:element name="AuthorizationStopIdentifications" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Identification" type="cmn:IdentificationType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingAuthorizeStop">
+    <xs:sequence>
+      <xs:element name="SessionID" type="cmn:SessionIDType"/>
+      <xs:element name="PartnerSessionID" type="st:String50" minOccurs="0"/>
+      <xs:element name="OperatorID" type="cmn:OperatorIDType"/>
+      <xs:element name="EVSEID" type="cmn:EvseIDType" minOccurs="0"/>
+      <xs:element name="Identification" type="cmn:IdentificationType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingAuthorizationStop">
+    <xs:sequence>
+      <xs:element name="SessionID" type="cmn:SessionIDType" minOccurs="0"/>
+      <xs:element name="PartnerSessionID" type="st:String50" minOccurs="0"/>
+      <xs:element name="ProviderID" type="cmn:ProviderIDType" minOccurs="0"/>
+      <xs:element name="AuthorizationStatus" type="cmn:AuthorizationStatusType"/>
+      <xs:element name="StatusCode" type="cmn:StatusCodeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingAuthorizeRemoteStart">
+    <xs:sequence>
+      <xs:element name="SessionID" type="cmn:SessionIDType" minOccurs="0"/>
+      <xs:element name="PartnerSessionID" type="st:String50" minOccurs="0"/>
+      <xs:element name="ProviderID" type="cmn:ProviderIDType"/>
+      <xs:element name="EVSEID" type="cmn:EvseIDType"/>
+      <xs:element name="Identification" type="cmn:IdentificationType"/>
+      <xs:element name="PartnerProductID" type="cmn:ProductIDType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingAuthorizeRemoteStop">
+    <xs:sequence>
+      <xs:element name="SessionID" type="cmn:SessionIDType"/>
+      <xs:element name="PartnerSessionID" type="st:String50" minOccurs="0"/>
+      <xs:element name="ProviderID" type="cmn:ProviderIDType"/>
+      <xs:element name="EVSEID" type="cmn:EvseIDType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingChargeDetailRecord">
+    <xs:sequence>
+      <xs:element name="SessionID" type="cmn:SessionIDType"/>
+      <xs:element name="PartnerSessionID" type="st:String50" minOccurs="0"/>
+      <xs:element name="PartnerProductID" type="cmn:ProductIDType" minOccurs="0"/>
+      <xs:element name="EvseID" type="cmn:EvseIDType"/>
+      <xs:element name="Identification" type="cmn:IdentificationType"/>
+      <xs:element name="ChargingStart" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="ChargingEnd" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="SessionStart" type="xs:dateTime"/>
+      <xs:element name="SessionEnd" type="xs:dateTime"/>
+      <xs:element name="MeterValueStart" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="MeterValueEnd" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="MeterValueInBetween" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="MeterValue" maxOccurs="unbounded">
+              <xs:simpleType>
+                <xs:restriction base="xs:decimal">
+                  <xs:fractionDigits value="3"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ConsumedEnergy" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="MeteringSignature" type="st:String200" minOccurs="0"/>
+      <xs:element name="HubOperatorID" type="cmn:OperatorIDType" minOccurs="0"/>
+      <xs:element name="HubProviderID" type="cmn:ProviderIDType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingGetChargeDetailRecords">
+    <xs:sequence>
+      <xs:element name="ProviderID" type="cmn:ProviderIDType"/>
+      <xs:element name="From" type="xs:dateTime" minOccurs="1"/>
+      <xs:element name="To" type="xs:dateTime" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingChargeDetailRecords">
+    <xs:sequence>
+      <xs:element name="eRoamingChargeDetailRecord" type="tns:eRoamingChargeDetailRecord" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

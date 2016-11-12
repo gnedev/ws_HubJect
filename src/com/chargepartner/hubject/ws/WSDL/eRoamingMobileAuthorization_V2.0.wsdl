@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><wsdl:definitions targetNamespace="http://www.hubject.com/b2b/services/mobileauthorization/v2.0" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.hubject.com/b2b/services/mobileauthorization/v2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:cmn="http://www.hubject.com/b2b/services/commontypes/v2.0">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.hubject.com/b2b/services/mobileauthorization/v2.0" schemaLocation="RelatedSchemas/eRoamingMobileAuthorization_V2.0.xsd"/>
+      <xs:import namespace="http://www.hubject.com/b2b/services/commontypes/v2.0" schemaLocation="RelatedSchemas/eRoamingCommonTypes_V2.0.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="eRoamingMobileRemoteStop">
+    <wsdl:part name="eRoamingMobileRemoteStop" element="tns:eRoamingMobileRemoteStop">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingMobileAuthorizeStart">
+    <wsdl:part name="eRoamingMobileAuthorizeStart" element="tns:eRoamingMobileAuthorizeStart">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingMobileRemoteStart">
+    <wsdl:part name="eRoamingMobileRemoteStart" element="tns:eRoamingMobileRemoteStart">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAcknowledgement">
+    <wsdl:part name="eRoamingAcknowledgement" element="cmn:eRoamingAcknowledgement">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingMobileAuthorizationStart">
+    <wsdl:part name="eRoamingMobileAuthorizationStart" element="tns:eRoamingMobileAuthorizationStart">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="eRoamingMobileAuthorizationPortType">
+    <wsdl:operation name="eRoamingMobileAuthorizeStart">
+      <wsdl:input name="eRoamingMobileAuthorizeStart" message="tns:eRoamingMobileAuthorizeStart">
+    </wsdl:input>
+      <wsdl:output name="eRoamingMobileAuthorizationStart" message="tns:eRoamingMobileAuthorizationStart">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingMobileRemoteStart">
+      <wsdl:input name="eRoamingMobileRemoteStart" message="tns:eRoamingMobileRemoteStart">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementMobileRemoteStart" message="tns:eRoamingAcknowledgement">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingMobileRemoteStop">
+      <wsdl:input name="eRoamingMobileRemoteStop" message="tns:eRoamingMobileRemoteStop">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementMobileRemoteStop" message="tns:eRoamingAcknowledgement">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="eRoamingMobileAuthorizationBinding" type="tns:eRoamingMobileAuthorizationPortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="eRoamingMobileAuthorizeStart">
+      <wsdlsoap:operation soapAction="eRoamingMobileAuthorizeStart"/>
+      <wsdl:input name="eRoamingMobileAuthorizeStart">
+        <wsdlsoap:body parts="eRoamingMobileAuthorizeStart" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingMobileAuthorizationStart">
+        <wsdlsoap:body parts="eRoamingMobileAuthorizationStart" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingMobileRemoteStart">
+      <wsdlsoap:operation soapAction="eRoamingMobileRemoteStart"/>
+      <wsdl:input name="eRoamingMobileRemoteStart">
+        <wsdlsoap:body parts="eRoamingMobileRemoteStart" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementMobileRemoteStart">
+        <wsdlsoap:body parts="eRoamingAcknowledgement" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingMobileRemoteStop">
+      <wsdlsoap:operation soapAction="eRoamingMobileRemoteStop"/>
+      <wsdl:input name="eRoamingMobileRemoteStop">
+        <wsdlsoap:body parts="eRoamingMobileRemoteStop" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementMobileRemoteStop">
+        <wsdlsoap:body parts="eRoamingAcknowledgement" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

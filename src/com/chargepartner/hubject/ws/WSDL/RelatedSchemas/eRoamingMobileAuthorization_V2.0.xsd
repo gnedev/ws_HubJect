@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.hubject.com/b2b/services/mobileauthorization/v2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.hubject.com/b2b/services/mobileauthorization/v2.0" xmlns:ns="http://www.hubject.com/b2b/services/commontypes/v2.0" xmlns:st="http://www.inubit.com/eMobility/SBP">
+  <xs:import schemaLocation="eRoamingCommonTypes_V2.0.xsd" namespace="http://www.hubject.com/b2b/services/commontypes/v2.0"/>
+  <xs:import schemaLocation="eRoamingSimpleTypes.xsd" namespace="http://www.inubit.com/eMobility/SBP"/>
+  <xs:element name="eRoamingMobileAuthorizeStart" type="tns:eRoamingMobileAuthorizeStart"/>
+  <xs:element name="eRoamingMobileAuthorizationStart" type="tns:eRoamingMobileAuthorizationStart"/>
+  <xs:element name="eRoamingMobileRemoteStart" type="tns:eRoamingMobileRemoteStart"/>
+  <xs:element name="eRoamingMobileRemoteStop" type="tns:eRoamingMobileRemoteStop"/>
+  <xs:complexType name="eRoamingMobileAuthorizeStart">
+    <xs:sequence>
+      <xs:element name="EvseID" type="ns:EvseIDType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="QRCodeIdentification" type="ns:QRCodeIdentificationType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="PartnerProductID" minOccurs="0" maxOccurs="1" type="st:String100"/>
+      <xs:element name="GetNewSession" minOccurs="0" maxOccurs="1" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingMobileAuthorizationStart">
+    <xs:sequence>
+      <xs:element name="SessionID" minOccurs="0" maxOccurs="1" type="ns:SessionIDType"/>
+      <xs:element name="AuthorizationStatus" type="ns:AuthorizationStatusType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="StatusCode" maxOccurs="1" minOccurs="0" type="ns:StatusCodeType"/>
+      <xs:element name="TermsOfUse" maxOccurs="1" minOccurs="0" type="st:String1000"/>
+      <xs:element name="GeoCoordinates" minOccurs="1" maxOccurs="1" type="ns:GeoCoordinatesType"/>
+      <xs:element name="Address" minOccurs="0" maxOccurs="1" type="ns:AddressIso19773Type"/>
+      <xs:element name="AdditionalInfo" maxOccurs="1" minOccurs="0" type="st:String200"/>
+      <xs:element name="EnAdditionalInfo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="ns:LocalizedInfoType">
+            <xs:maxLength value="2000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ChargingStationName" maxOccurs="1" minOccurs="0" type="st:String50"/>
+      <xs:element name="EnChargingStationName" maxOccurs="1" minOccurs="0" type="st:String50"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingMobileRemoteStart">
+    <xs:sequence>
+      <xs:element name="SessionID" type="ns:SessionIDType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingMobileRemoteStop">
+    <xs:sequence>
+      <xs:element name="SessionID" maxOccurs="1" type="ns:SessionIDType"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

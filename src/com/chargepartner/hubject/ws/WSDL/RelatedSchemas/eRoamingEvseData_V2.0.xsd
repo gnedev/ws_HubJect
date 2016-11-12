@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.hubject.com/b2b/services/evsedata/v2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.hubject.com/b2b/services/evsedata/v2.0" xmlns:cmn="http://www.hubject.com/b2b/services/commontypes/v2.0" xmlns:st="http://www.inubit.com/eMobility/SBP" xmlns:xs0="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="eRoamingCommonTypes_V2.0.xsd" namespace="http://www.hubject.com/b2b/services/commontypes/v2.0"/>
+  <xs:import schemaLocation="eRoamingSimpleTypes.xsd" namespace="http://www.inubit.com/eMobility/SBP"/>
+  <xs:element name="eRoamingPushEvseData" type="tns:eRoamingPushEvseData"/>
+  <xs:element name="eRoamingPullEvseData" type="tns:eRoamingPullEvseData"/>
+  <xs:element name="eRoamingEvseData" type="tns:eRoamingEvseData"/>
+  <xs:element name="eRoamingGetEvseById" type="tns:eRoamingGetEvseById"/>
+  <xs:element name="eRoamingEvseDataRecord" type="tns:EvseDataRecordType"/>
+  <xs:complexType name="eRoamingPushEvseData">
+    <xs:sequence>
+      <xs:element name="ActionType" minOccurs="1" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="fullLoad"/>
+            <xs:enumeration value="update"/>
+            <xs:enumeration value="insert"/>
+            <xs:enumeration value="delete"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="OperatorEvseData" minOccurs="1" maxOccurs="1" type="tns:OperatorEvseDataType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingPullEvseData">
+    <xs:sequence>
+      <xs:element name="ProviderID" minOccurs="1" maxOccurs="1" type="cmn:ProviderIDType"/>
+      <xs:choice>
+        <xs:element name="SearchCenter" minOccurs="0" maxOccurs="1" type="cmn:SearchCenterType"/>
+        <xs:element name="LastCall" minOccurs="0" maxOccurs="1" type="xs:dateTime"/>
+      </xs:choice>
+      <xs:element name="GeoCoordinatesResponseFormat" minOccurs="1" maxOccurs="1" type="cmn:GeoCoordinatesResponseFormatType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingGetEvseById">
+    <xs:sequence>
+      <xs:element name="EvseId" minOccurs="1" maxOccurs="1" type="cmn:EvseIDType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingEvseData">
+    <xs:sequence>
+      <xs:element name="EvseData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="OperatorEvseData" type="tns:OperatorEvseDataType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StatusCode" type="cmn:StatusCodeType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OperatorEvseDataType">
+    <xs:sequence>
+      <xs:element name="OperatorID" type="cmn:OperatorIDType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="OperatorName" type="st:String100" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="EvseDataRecord" minOccurs="0" maxOccurs="unbounded" type="tns:EvseDataRecordType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EvseDataRecordType">
+    <xs:sequence>
+      <xs:element name="EvseId" minOccurs="1" maxOccurs="1" type="cmn:EvseIDType"/>
+      <xs:element name="ChargingStationId" minOccurs="0" maxOccurs="1" type="st:String50"/>
+      <xs:element name="ChargingStationName" minOccurs="0" maxOccurs="1" type="st:String50"/>
+      <xs:element name="EnChargingStationName" minOccurs="0" maxOccurs="1" type="st:String50"/>
+      <xs:element name="Address" minOccurs="1" maxOccurs="1" type="cmn:AddressIso19773Type"/>
+      <xs:element name="GeoCoordinates" minOccurs="1" maxOccurs="1" type="cmn:GeoCoordinatesType"/>
+      <xs:element name="Plugs" minOccurs="1" maxOccurs="1" type="tns:PlugList"/>
+      <xs:element name="ChargingFacilities" minOccurs="0" maxOccurs="1" type="tns:ChargingFacilityList"/>
+      <xs:element name="ChargingModes" minOccurs="0" maxOccurs="1" type="tns:ChargingModeList"/>
+      <xs:element name="AuthenticationModes" minOccurs="1" maxOccurs="1" type="tns:AuthenticationModeList"/>
+      <xs:element name="MaxCapacity" minOccurs="0" maxOccurs="1" type="xs:int"/>
+      <xs:element name="PaymentOptions" minOccurs="0" maxOccurs="1" type="tns:PaymentOptionsList"/>
+      <xs:element name="Accessibility" minOccurs="1" maxOccurs="1" type="tns:AccessibilityType"/>
+      <xs:element name="HotlinePhoneNum" minOccurs="1" maxOccurs="1" type="cmn:PhoneNumberType"/>
+      <xs:element name="AdditionalInfo" minOccurs="0" maxOccurs="1" type="st:String200"/>
+      <xs:element name="EnAdditionalInfo" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:restriction base="cmn:LocalizedInfoType">
+            <xs:maxLength value="2000"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="GeoChargingPointEntrance" minOccurs="0" maxOccurs="1" type="cmn:GeoCoordinatesType"/>
+      <xs:element name="IsOpen24Hours" minOccurs="1" maxOccurs="1" type="xs:boolean"/>
+      <xs:element name="OpeningTime" minOccurs="0" maxOccurs="1" type="st:String200"/>
+      <xs:element name="HubOperatorID" minOccurs="0" maxOccurs="1" type="cmn:OperatorIDType"/>
+      <xs:element name="ClearinghouseID" minOccurs="0" maxOccurs="1" type="st:String20"/>
+      <xs:element name="IsHubjectCompatible" minOccurs="1" type="xs:boolean" maxOccurs="1"/>
+      <xs:element name="DynamicInfoAvailable" minOccurs="1" maxOccurs="1" type="tns:DynamicInfoType"/>
+    </xs:sequence>
+    <xs:attribute name="deltaType" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="insert"/>
+          <xs:enumeration value="update"/>
+          <xs:enumeration value="delete"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="lastUpdate" type="xs:dateTime"/>
+  </xs:complexType>
+  <xs:complexType name="ChargingFacilityList">
+    <xs:sequence>
+      <xs:element name="ChargingFacility" minOccurs="1" maxOccurs="unbounded" type="tns:ChargingFacilityType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ChargingModeList">
+    <xs:sequence>
+      <xs:element name="ChargingMode" minOccurs="1" maxOccurs="unbounded" type="tns:ChargingModeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AuthenticationModeList">
+    <xs:sequence>
+      <xs:element name="AuthenticationMode" minOccurs="1" maxOccurs="unbounded" type="tns:AuthenticationModeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentOptionsList">
+    <xs:sequence>
+      <xs:element name="PaymentOption" minOccurs="1" maxOccurs="unbounded" type="tns:PaymentOptionType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PlugList">
+    <xs:sequence>
+      <xs:element name="Plug" type="tns:PlugType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="PlugType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Small Paddle Inductive"/>
+      <xs:enumeration value="Large Paddle Inductive"/>
+      <xs:enumeration value="AVCON Connector"/>
+      <xs:enumeration value="Tesla Connector"/>
+      <xs:enumeration value="NEMA 5-20"/>
+      <xs:enumeration value="Type E French Standard"/>
+      <xs:enumeration value="Type F Schuko"/>
+      <xs:enumeration value="Type G British Standard"/>
+      <xs:enumeration value="Type J Swiss Standard"/>
+      <xs:enumeration value="Type 1 Connector (Cable Attached)"/>
+      <xs:enumeration value="Type 2 Outlet"/>
+      <xs:enumeration value="Type 2 Connector (Cable Attached)"/>
+      <xs:enumeration value="Type 3 Outlet"/>
+      <xs:enumeration value="IEC 60309 Single Phase"/>
+      <xs:enumeration value="IEC 60309 Three Phase"/>
+      <xs:enumeration value="CCS Combo 2 Plug (Cable Attached)"/>
+      <xs:enumeration value="CCS Combo 1 Plug (Cable Attached)"/>
+      <xs:enumeration value="CHAdeMO"/>
+      <xs:enumeration value="Unspecified"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ChargingFacilityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="100 - 120V, 1-Phase ≤10A"/>
+      <xs:enumeration value="100 - 120V, 1-Phase ≤16A"/>
+      <xs:enumeration value="100 - 120V, 1-Phase ≤32A"/>
+      <xs:enumeration value="200 - 240V, 1-Phase ≤10A"/>
+      <xs:enumeration value="200 - 240V, 1-Phase ≤16A"/>
+      <xs:enumeration value="200 - 240V, 1-Phase ≤32A"/>
+      <xs:enumeration value="200 - 240V, 1-Phase >32A"/>
+      <xs:enumeration value="380 - 480V, 3-Phase ≤16A"/>
+      <xs:enumeration value="380 - 480V, 3-Phase ≤32A"/>
+      <xs:enumeration value="380 - 480V, 3-Phase ≤63A"/>
+      <xs:enumeration value="Battery exchange"/>
+      <xs:enumeration value="DC Charging ≤20kW"/>
+      <xs:enumeration value="DC Charging ≤50kW"/>
+      <xs:enumeration value="DC Charging >50kW"/>
+      <xs:enumeration value="Unspecified"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AccessibilityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified"/>
+      <xs:enumeration value="Free publicly accessible"/>
+      <xs:enumeration value="Restricted access"/>
+      <xs:enumeration value="Paying publicly accessible"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ChargingModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Mode_1"/>
+      <xs:enumeration value="Mode_2"/>
+      <xs:enumeration value="Mode_3"/>
+      <xs:enumeration value="Mode_4"/>
+      <xs:enumeration value="CHAdeMO"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AuthenticationModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NFC RFID Classic"/>
+      <xs:enumeration value="NFC RFID DESFire"/>
+      <xs:enumeration value="PnC"/>
+      <xs:enumeration value="REMOTE"/>
+      <xs:enumeration value="Direct Payment"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PaymentOptionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="No Payment"/>
+      <xs:enumeration value="Direct"/>
+      <xs:enumeration value="Contract"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DynamicInfoType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+      <xs:enumeration value="auto"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

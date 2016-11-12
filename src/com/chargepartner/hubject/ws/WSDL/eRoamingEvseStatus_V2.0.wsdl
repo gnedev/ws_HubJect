@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><wsdl:definitions targetNamespace="http://www.hubject.com/b2b/services/evsestatus/v2.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsc="http://www.hubject.com/b2b/services/evsestatus/v2.0" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:cmn="http://www.hubject.com/b2b/services/commontypes/v2.0">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.hubject.com/b2b/services/evsestatus/v2.0" schemaLocation="RelatedSchemas/eRoamingEvseStatus_V2.0.xsd"/>
+      <xs:import namespace="http://www.hubject.com/b2b/services/commontypes/v2.0" schemaLocation="RelatedSchemas/eRoamingCommonTypes_V2.0.xsd"/>	 
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="eRoamingPushEvseStatus">
+    <wsdl:part name="parameters" element="wsc:eRoamingPushEvseStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingPullEvseStatusById">
+    <wsdl:part name="parameters" element="wsc:eRoamingPullEvseStatusById">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingPullEvseStatus">
+    <wsdl:part name="parameters" element="wsc:eRoamingPullEvseStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingEvseStatusById">
+    <wsdl:part name="parameters" element="wsc:eRoamingEvseStatusById">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingEvseStatus">
+    <wsdl:part name="parameters" element="wsc:eRoamingEvseStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAcknowledgement">
+    <wsdl:part name="parameters" element="cmn:eRoamingAcknowledgement">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EvseStatusPortType">
+    <wsdl:operation name="eRoamingPushEvseStatus">
+      <wsdl:input name="eRoamingPushEvseStatus" message="wsc:eRoamingPushEvseStatus">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementPushEvseStatus" message="wsc:eRoamingAcknowledgement">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingPullEvseStatus">
+      <wsdl:input name="eRoamingPullEvseStatus" message="wsc:eRoamingPullEvseStatus">
+    </wsdl:input>
+      <wsdl:output name="eRoamingEvseStatus" message="wsc:eRoamingEvseStatus">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingPullEvseStatusById">
+      <wsdl:input name="eRoamingPullEvseStatusById" message="wsc:eRoamingPullEvseStatusById">
+    </wsdl:input>
+      <wsdl:output name="eRoamingEvseStatusById" message="wsc:eRoamingEvseStatusById">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EvseStatusBinding" type="wsc:EvseStatusPortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="eRoamingPushEvseStatus">
+      <wsdlsoap:operation soapAction="eRoamingPushEvseStatus"/>
+      <wsdl:input name="eRoamingPushEvseStatus">
+        <wsdlsoap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementPushEvseStatus">
+        <wsdlsoap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingPullEvseStatus">
+      <wsdlsoap:operation soapAction="eRoamingPullEvseStatus"/>
+      <wsdl:input name="eRoamingPullEvseStatus">
+        <wsdlsoap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingEvseStatus">
+        <wsdlsoap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingPullEvseStatusById">
+      <wsdlsoap:operation soapAction="eRoamingPullEvseStatusById"/>
+      <wsdl:input name="eRoamingPullEvseStatusById">
+        <wsdlsoap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingEvseStatusById">
+        <wsdlsoap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

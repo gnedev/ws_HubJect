@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><xs:schema elementFormDefault="qualified" targetNamespace="http://www.hubject.com/b2b/services/evsesearch/v2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.hubject.com/b2b/services/evsesearch/v2.0" xmlns:ns="http://www.hubject.com/b2b/services/commontypes/v2.0" xmlns:nse="http://www.hubject.com/b2b/services/evsedata/v2.0">
+  <xs:import schemaLocation="eRoamingCommonTypes_V2.0.xsd" namespace="http://www.hubject.com/b2b/services/commontypes/v2.0"/>
+  <xs:import schemaLocation="eRoamingEvseData_V2.0.xsd" namespace="http://www.hubject.com/b2b/services/evsedata/v2.0"/>
+  <xs:element name="eRoamingSearchEvse" type="tns:eRoamingSearchEvse"/>
+  <xs:element name="eRoamingEvseSearchResult" type="tns:eRoamingEvseSearchResult"/>
+  <xs:complexType name="eRoamingSearchEvse">
+    <xs:sequence>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GeoCoordinates" type="ns:GeoCoordinatesType"/>
+          <xs:element minOccurs="0" name="Address" type="ns:AddressIso19773Type"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:element name="ProviderID" minOccurs="1" maxOccurs="1" type="ns:ProviderIDType"/>
+      <xs:element name="Range" minOccurs="1" maxOccurs="1" type="xs:integer"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="Plug" type="nse:PlugType"/>
+      <xs:element maxOccurs="1" minOccurs="0" name="ChargingFacility" type="nse:ChargingFacilityType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eRoamingEvseSearchResult">
+    <xs:sequence>
+      <xs:element name="EvseMatches">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="EvseMatch" type="tns:EvseMatchType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EvseMatchType">
+    <xs:sequence>
+      <xs:element name="Distance">
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="5"/>
+            <xs:fractionDigits value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="EVSE" type="nse:EvseDataRecordType"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><wsdl:definitions targetNamespace="http://www.hubject.com/b2b/services/authenticationdata/v2.0" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.hubject.com/b2b/services/authenticationdata/v2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:cmn="http://www.hubject.com/b2b/services/commontypes/v2.0">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.hubject.com/b2b/services/authenticationdata/v2.0" schemaLocation="RelatedSchemas/eRoamingAuthenticationData_V2.0.xsd"/>
+      <xs:import namespace="http://www.hubject.com/b2b/services/commontypes/v2.0" schemaLocation="RelatedSchemas/eRoamingCommonTypes_V2.0.xsd"/>	 
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="eRoamingPushAuthenticationData">
+    <wsdl:part name="eRoamingPushAuthenticationData" element="tns:eRoamingPushAuthenticationData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAuthenticationData">
+    <wsdl:part name="eRoamingAuthenticationData" element="tns:eRoamingAuthenticationData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingPullAuthenticationData">
+    <wsdl:part name="eRoamingPullAuthenticationData" element="tns:eRoamingPullAuthenticationData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAcknowledgement">
+    <wsdl:part name="eRoamingAcknowledgement" element="cmn:eRoamingAcknowledgement">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="eRoamingAuthenticationDataPortType">
+    <wsdl:operation name="eRoamingPushAuthenticationData">
+      <wsdl:input name="eRoamingPushAuthenticationData" message="tns:eRoamingPushAuthenticationData">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementPushAuthenticationData" message="tns:eRoamingAcknowledgement">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingPullAuthenticationData">
+      <wsdl:input name="eRoamingPullAuthenticationData" message="tns:eRoamingPullAuthenticationData">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAuthenticationData" message="tns:eRoamingAuthenticationData">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="eRoamingAuthenticationDataBinding" type="tns:eRoamingAuthenticationDataPortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="eRoamingPushAuthenticationData">
+      <wsdlsoap:operation soapAction="eRoamingPushAuthenticationData"/>
+      <wsdl:input name="eRoamingPushAuthenticationData">
+        <wsdlsoap:body parts="eRoamingPushAuthenticationData" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementPushAuthenticationData">
+        <wsdlsoap:body parts="eRoamingAcknowledgement" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingPullAuthenticationData">
+      <wsdlsoap:operation soapAction="eRoamingPullAuthenticationData"/>
+      <wsdl:input name="eRoamingPullAuthenticationData">
+        <wsdlsoap:body parts="eRoamingPullAuthenticationData" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAuthenticationData">
+        <wsdlsoap:body parts="eRoamingAuthenticationData" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

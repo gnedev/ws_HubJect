@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><wsdl:definitions targetNamespace="http://www.hubject.com/b2b/services/authorization/v2.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.hubject.com/b2b/services/authorization/v2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:cmn="http://www.hubject.com/b2b/services/commontypes/v2.0">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.hubject.com/b2b/services/authorization/v2.0" schemaLocation="RelatedSchemas/eRoamingAuthorization_V2.0.xsd"/>
+      <xs:import namespace="http://www.hubject.com/b2b/services/commontypes/v2.0" schemaLocation="RelatedSchemas/eRoamingCommonTypes_V2.0.xsd"/>	 
+    </xsd:schema>
+  </wsdl:types>
+   <wsdl:message name="eRoamingAuthorizeStart">
+    <wsdl:part name="eRoamingAuthorizeStart" element="tns:eRoamingAuthorizeStart">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingChargeDetailRecords">
+    <wsdl:part name="eRoamingChargeDetailRecords" element="tns:eRoamingChargeDetailRecords">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingChargeDetailRecord">
+    <wsdl:part name="eRoamingChargeDetailRecord" element="tns:eRoamingChargeDetailRecord">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAcknowledgement">
+    <wsdl:part name="eRoamingAcknowledgement" element="cmn:eRoamingAcknowledgement">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAuthorizeStop">
+    <wsdl:part name="eRoamingAuthorizeStop" element="tns:eRoamingAuthorizeStop">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAuthorizationStop">
+    <wsdl:part name="eRoamingAuthorizationStop" element="tns:eRoamingAuthorizationStop">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAuthorizationStart">
+    <wsdl:part name="eRoamingAuthorizationStart" element="tns:eRoamingAuthorizationStart">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAuthorizeRemoteStop">
+    <wsdl:part name="eRoamingAuthorizeRemoteStop" element="tns:eRoamingAuthorizeRemoteStop">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingAuthorizeRemoteStart">
+    <wsdl:part name="eRoamingAuthorizeRemoteStart" element="tns:eRoamingAuthorizeRemoteStart">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="eRoamingGetChargeDetailRecords">
+    <wsdl:part name="eRoamingGetChargeDetailRecords" element="tns:eRoamingGetChargeDetailRecords">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="eRoamingAuthorizationPortType">
+    <wsdl:operation name="eRoamingAuthorizeStart">
+      <wsdl:input name="eRoamingAuthorizeStart" message="tns:eRoamingAuthorizeStart">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAuthorizationStart" message="tns:eRoamingAuthorizationStart">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingAuthorizeStop">
+      <wsdl:input name="eRoamingAuthorizeStop" message="tns:eRoamingAuthorizeStop">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAuthorizationStop" message="tns:eRoamingAuthorizationStop">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingAuthorizeRemoteStart">
+      <wsdl:input name="eRoamingAuthorizeRemoteStart" message="tns:eRoamingAuthorizeRemoteStart">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementRemoteStart" message="tns:eRoamingAcknowledgement">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingAuthorizeRemoteStop">
+      <wsdl:input name="eRoamingAuthorizeRemoteStop" message="tns:eRoamingAuthorizeRemoteStop">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementRemoteStop" message="tns:eRoamingAcknowledgement">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingChargeDetailRecord">
+      <wsdl:input name="eRoamingChargeDetailRecord" message="tns:eRoamingChargeDetailRecord">
+    </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementChargeDetailRecord" message="tns:eRoamingAcknowledgement">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingGetChargeDetailRecords">
+      <wsdl:input name="eRoamingGetChargeDetailRecords" message="tns:eRoamingGetChargeDetailRecords">
+    </wsdl:input>
+      <wsdl:output name="eRoamingChargeDetailRecords" message="tns:eRoamingChargeDetailRecords">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="eRoamingAuthorizationBinding" type="tns:eRoamingAuthorizationPortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="eRoamingAuthorizeStart">
+      <wsdlsoap:operation soapAction="eRoamingAuthorizeStart"/>
+      <wsdl:input name="eRoamingAuthorizeStart">
+        <wsdlsoap:body parts="eRoamingAuthorizeStart" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAuthorizationStart">
+        <wsdlsoap:body parts="eRoamingAuthorizationStart" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingAuthorizeStop">
+      <wsdlsoap:operation soapAction="eRoamingAuthorizeStop"/>
+      <wsdl:input name="eRoamingAuthorizeStop">
+        <wsdlsoap:body parts="eRoamingAuthorizeStop" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAuthorizationStop">
+        <wsdlsoap:body parts="eRoamingAuthorizationStop" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingAuthorizeRemoteStart">
+      <wsdlsoap:operation soapAction="eRoamingAuthorizeRemoteStart"/>
+      <wsdl:input name="eRoamingAuthorizeRemoteStart">
+        <wsdlsoap:body parts="eRoamingAuthorizeRemoteStart" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementRemoteStart">
+        <wsdlsoap:body parts="eRoamingAcknowledgement" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingAuthorizeRemoteStop">
+      <wsdlsoap:operation soapAction="eRoamingAuthorizeRemoteStop"/>
+      <wsdl:input name="eRoamingAuthorizeRemoteStop">
+        <wsdlsoap:body parts="eRoamingAuthorizeRemoteStop" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementRemoteStop">
+        <wsdlsoap:body parts="eRoamingAcknowledgement" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingChargeDetailRecord">
+      <wsdlsoap:operation soapAction="eRoamingChargeDetailRecord"/>
+      <wsdl:input name="eRoamingChargeDetailRecord">
+        <wsdlsoap:body parts="eRoamingChargeDetailRecord" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingAcknowledgementChargeDetailRecord">
+        <wsdlsoap:body parts="eRoamingAcknowledgement" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eRoamingGetChargeDetailRecords">
+      <wsdlsoap:operation soapAction="eRoamingGetChargeDetailRecords"/>
+      <wsdl:input name="eRoamingGetChargeDetailRecords">
+        <wsdlsoap:body parts="eRoamingGetChargeDetailRecords" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="eRoamingChargeDetailRecords">
+        <wsdlsoap:body parts="eRoamingChargeDetailRecords" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

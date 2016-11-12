@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-.--><wsdl:definitions targetNamespace="http://www.hubject.com/b2b/services/mobileauthorization/v2.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsc="http://www.hubject.com/b2b/services/mobileauthorization/v2.0" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://www.hubject.com/b2b/services/mobileauthorization/v2.0" location="eRoamingMobileAuthorization_V2.0.wsdl"/>
+  <wsdl:service name="eRoamingMobileAuthorization_V2.0">
+    <wsdl:port name="eRoamingMobileAuthorization_V2.0Port" binding="wsc:eRoamingMobileAuthorizationBinding">
+      <wsdlsoap:address location="http://10.56.52.31:8000/ibis/ws/eRoamingMobileAuthorization_V2.0"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
